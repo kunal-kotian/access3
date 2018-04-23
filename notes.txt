@@ -1,0 +1,29 @@
+To do and notes:
+
+-- Why use BytesIO 
+I think it avoids writing a file to disk
+(need to check speed too)
+see: https://stackoverflow.com/questions/37703634/how-to-import-a-text-file-on-aws-s3-into-pandas-without-writing-to-disk/37703861
+
+-- Also add way to save csv files
+
+-- getting rid of boto3
+https://s3fs.readthedocs.io/en/latest/
+s3fs sits on top of boto3….may be possible to get rid of boto3
+
+try this for speed compariosn (avoids bytesio)
+with fs.open(player_list[0]+'.pickle','wb') as f:
+   pickle.dump(df1, f)
+
+use of pyarrow:
+feather package already sits on top of pyarrow.
+based on we mckinney's blog, it looked like pyarrow might be slightly faster than feather
+also, if you have feather you don't need to install pyarrow
+
+add ability to read and write directly from pickle files without using pd.read_pickle.
+see: kk_topic_modeling_v1-15_S3pickling.ipynb
+can test on loading vocab_dictionary
+
+
+### check if the data types are being restored when you load a dataframe from pickled file
+
